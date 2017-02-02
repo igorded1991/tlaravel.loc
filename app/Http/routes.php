@@ -10,7 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
+//Уроки 7, 8
 Route::get('/', ['as'=>'home',function () {
     return view('welcome');
 }]);
@@ -46,6 +46,8 @@ Route::post('/comments',function () {
 	
 }); */
 
+
+//Уроки 7, 8
 Route::group(['prefix'=>'admin'], function() {
 	
 	Route::get('page/create/{id}', function($id) {
@@ -63,3 +65,15 @@ Route::group(['prefix'=>'admin'], function() {
 		echo 'page/edit';
 	});
 });
+
+//Урок 9
+Route::get('/about/{id}', 'FirstController@show');
+
+Route::get('/articles', ['uses'=>'Admin\Core@getArticles', 'as'=>'articles']);
+Route::get('/articles/{id}', ['uses'=>'Admin\Core@getArticle', 'as'=>'article']);
+
+//list pages
+// Route::get('/pages/add', 'Admin\CoreResource@add');
+// Route::resource('/pages', 'Admin\CoreResource', ['except'=>['index', 'create']]);
+
+Route::controller('/pages', 'PagesController', ['getIndex'=>'page.index']);

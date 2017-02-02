@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form action="/comments" method="POST">
+<form action="/pages" method="POST">
 	{!! csrf_field() !!}
 	
 	Имя:
