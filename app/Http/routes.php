@@ -11,9 +11,7 @@
 |
 */
 //Уроки 7, 8
-Route::get('/', ['as'=>'home',function () {
-    return view('welcome');
-}]);
+Route::get('/', ['as'=>'home', 'uses'=>'Admin\IndexController@show']);
 
 Route::get('/article/{id}', ['as'=>'article',function ($id) {
     echo $id;
@@ -70,7 +68,7 @@ Route::group(['prefix'=>'admin'], function() {
 Route::get('/about/{id}', 'FirstController@show');
 
 Route::get('/articles', ['uses'=>'Admin\Core@getArticles', 'as'=>'articles']);
-Route::get('/articles/{id}', ['uses'=>'Admin\Core@getArticle', 'as'=>'article']);
+Route::get('/articles/{page}', ['middleware' => 'mymiddle:admin','uses'=>'Admin\Core@getArticle', 'as'=>'article'])/*->middleware(['mymiddle'])*/;
 
 //list pages
 // Route::get('/pages/add', 'Admin\CoreResource@add');
