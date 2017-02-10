@@ -7,6 +7,7 @@
 		<li class="active"><a href="<?php echo route('about'); ?>">About</a></li>
 		<li><a href="<?php echo route('articles'); ?>">Articles</a></li>
 		<li><a href="<?php echo route('article',array('id'=>10)); ?>">Article</a></li>
+		<li><a href="<?php echo route('contact'); ?>">Contact</a></li>
 	@endsection
 @endsection
 
