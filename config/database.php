@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'fetch' => PDO::FETCH_CLASS,
+    'fetch' => PDO::FETCH_CLASS,	//PDO::FETCH_ASSOC // PDO::FETCH_NUM // PDO::FETCH_BOTH
 
     /*
     |--------------------------------------------------------------------------
@@ -60,7 +60,7 @@ return [
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
             'charset' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
+            'collation' => env('DB_COLLATION', 'utf8_unicode_ci'),
             'prefix' => '',
             'strict' => false,
             'engine' => null,
@@ -91,6 +91,7 @@ return [
     |
     */
 
+// table
     'migrations' => 'migrations',
 
     /*
