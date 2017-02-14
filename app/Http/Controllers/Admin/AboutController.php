@@ -10,6 +10,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use Illuminate\Http\RedirectResponse;
 
+use DB;
+
 class AboutController extends Controller
 {
     //
@@ -20,29 +22,25 @@ class AboutController extends Controller
 
     	if(view()->exists('default.about')) {
 
-    		$view = view('default.about')->withTitle('About')->render();
 
-    		/*return (new Response($view))->header('Content-Type', 'newType')
-    									->header('Header-One', 'Header One');*/
+    		// $articles = DB::select('SELECT * FROM `articles` WHERE `id` = :id', ['id' => 11]);
 
-    		/*return response($view)->header('Content-Type', 'newType')
-    									->header('Header-One', 'Header One');*/
+    		// DB::insert('INSERT INTO `articles`(`name`, `text`) VALUES(?, ?)', ['test 1', 'TEXT']);
 
-    		// return response()->view('default.about', ['title'=> 'About']);
-    		// return response()->download('robots.txt', 'mytext.txt');
+    		// $result = DB::connection()->getPdo()->lastInsertId();	//Получить идентификатор последнего добавленого элемента
 
-    		// return view('default.about')->withTitle('About');
+    		// $result = DB::update('UPDATE `articles` SET `name` = ? WHERE `id` =  ?', ["TEST 2", 13]);
 
-    		/*return response($view)->withHeaders([
-    			'Header-One' => 'hello',
-    			'Header-Two' => 'Download Files'
-    		]);*/
+    		// $result = DB::delete('DELETE FROM `articles` WHERE `id` = ?', [13]);
 
-			// return redirect()->action('Admin\ContactController@show');
+    		// DB::statement('DROP table `articles`');
 
-			// return RedirectResponse::create('/articles');
+    		$articles = DB::select('SELECT * FROM `articles` WHERE `id` >= ?', [8]);
+    		
+    		// dump($result);
+    		dump($articles);
 
-			return response()->myRes($view);
+    		return view('default.about')->withTitle('About');
 
     	}
 
